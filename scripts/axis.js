@@ -45,22 +45,22 @@
 
   const reading = {
     0: [
-      'Research method', '研究方法', '研究方法',
+      'Design Science Research', 'デザイン科学研究（DSR）', '设计科学研究（DSR）',
       'How can we improve the way people co-design interpretive signs in public spaces? This study follows design science research (DSR) and action design research (ADR): participate in co-design, identify problems in the process, build tools to address them, and test whether those tools are useful in practice.',
-      '这项研究想改善在植物园一起制作解说标识的方法。研究从参与实际共创开始，观察哪些环节难以判断，再为这些问题开发工具，并回到现场检验工具是否好用、能否提供有用的信息。这是设计科学研究（DSR）与行动设计研究（ADR）的基本思路。',
+      '本研究采用设计科学研究（Design Science Research，DSR）作为研究方法。为了改善植物园解说标识的共创，我先参与现场实践，找出难以判断的环节，再为这些问题开发工具，最后回到现场检验工具能否帮助判断。研究也借鉴了行动设计研究（ADR）中在实践现场开发和评估工具的做法。',
     ],
     1: [
-      'Co-design in practice', '共創に参加', '共创实践',
+      'Field participation', '現場への参加と観察', '现场参与与观察',
       'The co-design process begins with studying the topic before the workshop, then moves through site visits and field research. Participants use focus groups to make sense of the problems they find, develop prototype signs, and test them. The study examines what happens at each step in the botanical garden case.',
       '共创先从事前学习和现场调查开始。参与者观察标识和周围环境，再在小组里交换看法、整理需要解决的问题。接着设计标识原型，在现场试一试。研究者参加了这套流程，重点观察哪些环节需要更可靠的判断依据。',
     ],
     2: [
-      'Two gaps in the workflow', '二つの課題', '两个问题',
+      'Two research gaps', '二つの研究課題', '两个研究问题',
       'During problem mapping, workshop discussion can stay at the level of personal impressions because participants lack a shared way to diagnose existing signs. During prototype testing, it is hard to observe reading without disrupting it, or to tell what information drew attention. These gaps motivate two independent tools: I for early diagnosis and II for field evaluation.',
       '讨论现有标识时，大家的判断容易停留在个人感受，需要一套共同规则来比较和记录问题。到现场测试新标识时，又很难在不打扰读者的情况下，知道他们看了哪些内容。前一个问题关系到怎么开始设计，后一个关系到怎么评估；因此分别开发了两套工具。',
     ],
     3: [
-      'Tools built for the two gaps', '二つのツール', '两套工具',
+      'Qualitative and quantitative tool development', '質的・定量分析ツールの開発', '定性与定量工具开发',
       'The first tool uses image-based thematic analysis. The second uses quantitative, contactless eye tracking.',
       '两套工具用的是不同方法。I 对标识图像做定性主题分析，再把整个标识系统的分析结果汇总成量化报告，供设计前讨论。II 用非接触眼动追踪记录实际观看行为，再进行定量分析，供设计后的现场评估。两者处理的问题不同，可以各自使用。',
     ],
@@ -75,7 +75,7 @@
       '这是一个定量分析工具。研究者用非接触眼动追踪记录参与者看标识时的视线，再用这些数据做定量分析。参与者不需要佩戴或操作设备，可以按平常的方式观看实体标识。工具关注的是实际看到哪里；参与者反馈是在实验之后收集的补充验证证据，不是眼动数据本身。',
     ],
     4: [
-      'Validate the tools independently', 'ツールを確かめる', '分别验证工具',
+      'Trial- and experiment-based validation', '試用と実験による検証', '基于试用与实验的验证',
       'Tool I uses ARS-based coding and expert feedback. Tool II combines gaze analysis and user feedback following a field comparison.',
       '工具 I 用植物园现有标识试用，看看共同的编码规则能不能变成实际可用的记录。工具 II 在现场用两种标识做对照实验，检验非接触采集和后续分析能否支持现场评估。两套工具各自验证，重点是工具是否有用，不是给标识设计排出好坏。',
     ],
@@ -107,7 +107,7 @@
   };
 
   const japaneseCopy = {
-    0: '植物園の解説サインを、いろいろな立場の人が一緒に作る方法を考えました。まず実際の共創に参加し、どこで判断が難しくなるかを見ます。次に、その課題に合ったツールを作ります。最後に現場で使い、ツールが判断の助けになるかを確かめます。',
+    0: '本研究の方法は、デザイン科学研究（Design Science Research、DSR）です。植物園のサインを一緒に作る現場に参加し、どこで判断が難しくなるかを調べました。次に、その課題に合ったツールを作りました。最後に現場で試し、判断の助けになるかを確かめます。実践の中で作って試す点では、アクション・デザイン・リサーチ（ADR）の考え方も取り入れています。',
     1: 'まずテーマを学び、植物園でサインとその周りの環境を見ます。次に、グループで意見を出し合い、何を直すかを整理します。そのあと、新しいサインの試作案を作って現地で試します。研究者もこの流れに参加し、どの場面で判断のための情報が足りないかを見ました。',
     2: '一つ目は、今あるサインのどこを直すかを決める場面です。見方は人によって違うので、意見を比べるための共通のルールが必要でした。二つ目は、試作案を現地で試す場面です。読む人のじゃまをせず、どの情報を見たかを知る必要がありました。設計の前と後にある別々の課題なので、それぞれにツールを作りました。',
     3: '二つのツールは異なる方法を使います。I は写真を使った質的なテーマ分析です。その結果を数値でまとめ、サイン全体を見直す手がかりにします。II は視線データを使った定量分析です。作ったサインを現地で読んだときの見方を調べます。二つのツールは別々に使えます。',
@@ -241,6 +241,8 @@
   function paint() {
     const set = (ids, visible) => ids.forEach(id => reveal(id, visible));
     const map = get('map');
+    if (shown === 0) delete map.dataset.layout;
+    else map.dataset.layout = shown >= 1.5 ? 'expanded' : 'practice';
     map.toggleAttribute('data-quiet-workflow', shown >= 3);
     const tool = typeof selected === 'string' && selected.match(/-(ii?)$/)?.[1];
     if (tool) map.dataset.focusTool = tool;

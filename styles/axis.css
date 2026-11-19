@@ -37,12 +37,22 @@ button { text-decoration: underline; text-underline-offset: .22em; text-decorati
 button:hover, button:focus-visible { text-decoration-color: currentColor; }
 button:active { transform: translateY(2px); }
 :focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
-#map { position: relative; min-height: 0; isolation: isolate; }
+#map {
+  position: relative;
+  min-height: 0;
+  isolation: isolate;
+  --spine-position: 59%;
+  --workflow-position: 42%;
+  --axis-motion: 320ms var(--ease);
+}
+#map[data-layout="practice"] { --spine-position: 73%; }
+#map[data-layout="expanded"] { --spine-position: 90%; --workflow-position: 17%; }
+#spine, #practice, #workflow-line { transition: top var(--axis-motion); }
 #workflow-line {
   position: absolute;
   width: 100vw;
   height: 1.5px;
-  top: 17%;
+  top: var(--workflow-position);
   left: 50%;
   translate: -50% -50%;
   background: #767a70;
@@ -54,6 +64,9 @@ button:active { transform: translateY(2px); }
 #map .branch-i { stroke: url(#forest-rail); }
 #map .branch-ii { stroke: url(#lemon-rail); }
 #map .connector { stroke: #a0a397; stroke-width: 1; }
+#practice-connector { transition: d var(--axis-motion); }
+#map[data-layout="practice"] #practice-connector { d: path("M140 286H16V168"); }
+#map:not([data-layout]) #practice-connector { d: path("M140 230H16V168"); }
 .track {
   position: absolute;
   display: grid;
@@ -80,7 +93,7 @@ button:active { transform: translateY(2px); }
 }
 #spine {
   --active-step: 0;
-  top: 90%;
+  top: var(--spine-position);
   grid-template-columns: repeat(4, 1fr);
   grid-auto-rows: 60px;
   align-items: stretch;
@@ -116,7 +129,7 @@ button:active { transform: translateY(2px); }
 #spine button { width: 100%; height: 100%; padding: 0 4px; }
 #spine button[aria-pressed="true"] { color: var(--ink); }
 #spine button:focus-visible { outline-color: currentColor; outline-offset: -5px; }
-#practice { top: 17%; grid-template-columns: repeat(5, 1fr); color: var(--muted); font-size: 16px; font-weight: 500; }
+#practice { top: var(--workflow-position); grid-template-columns: repeat(5, 1fr); color: var(--muted); font-size: 16px; font-weight: 500; }
 #practice li { transition: color 180ms ease-out; }
 #practice .track-label { display: inline-block; }
 #map[data-quiet-workflow] #practice {
