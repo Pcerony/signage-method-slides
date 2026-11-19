@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Research Method</title>
+  <link rel="stylesheet" href="./styles/axis.css">
+  <script src="./scripts/axis.js" defer></script>
+</head>
+<body>
+  <main aria-label="Research method">
+    <section id="map" aria-label="Method map">
+      <div id="workflow-line" aria-hidden="true" hidden></div>
+      <svg viewBox="0 0 1000 400" preserveAspectRatio="none" aria-hidden="true">
+        <defs>
+          <linearGradient id="forest-rail" gradientUnits="userSpaceOnUse" x2="860" y2="0">
+            <stop stop-color="#092f23"/>
+            <stop offset=".62" stop-color="#0b5d3b"/>
+            <stop offset="1" stop-color="#318f65"/>
+          </linearGradient>
+          <linearGradient id="lemon-rail" gradientUnits="userSpaceOnUse" x2="860" y2="0">
+            <stop stop-color="#47551c"/>
+            <stop offset=".62" stop-color="#798b25"/>
+            <stop offset="1" stop-color="#c5e803"/>
+          </linearGradient>
+        </defs>
+        <g id="practice-lines" hidden>
+          <path class="draw connector" pathLength="1" d="M140 354H16V68"/>
+        </g>
+        <g id="tool-lines" hidden>
+          <path class="draw connector" pathLength="1" d="M500 68V95H258V164H140"/>
+          <path class="draw connector" pathLength="1" d="M884 68H970V260H140V242"/>
+        </g>
+        <g id="prototype-lines" hidden>
+          <path class="draw branch branch-i" pathLength="1" d="M140 164H380"/>
+          <path class="draw branch branch-ii" pathLength="1" d="M140 242H380"/>
+        </g>
+        <g id="trial-lines" hidden>
+          <path class="draw branch branch-i" pathLength="1" d="M380 164H620"/>
+          <path class="draw branch branch-ii" pathLength="1" d="M380 242H620"/>
+        </g>
+        <g id="validation-lines-i" hidden>
+          <path class="draw branch branch-i" pathLength="1" d="M620 164H860"/>
+        </g>
+        <g id="validation-lines-ii" hidden>
+          <path class="draw branch branch-ii" pathLength="1" d="M620 242H860"/>
+          <path class="draw branch branch-ii" pathLength="1" d="M620 242H738V296H860"/>
+        </g>
+      </svg>
+      <ol id="spine" class="track" aria-label="Shared method">
+        <li><button id="step-practice" type="button" data-step="1" aria-controls="practice">Join co-design</button></li>
+        <li><button id="step-gaps" type="button" data-step="2" aria-controls="tool-i tool-ii">Identify gaps</button></li>
+        <li><button id="step-prototype" type="button" data-step="3" aria-controls="prototype-i prototype-ii">Build prototypes</button></li>
+        <li><button id="step-validation" type="button" data-step="4" aria-controls="trial-i trial-ii">Validate tools</button></li>
+      </ol>
+      <ol id="practice" class="track" hidden aria-label="Co-design workflow">
+        <li id="study"></li>
+        <li id="field"></li>
+        <li id="focus"></li>
+        <li id="design"></li>
+        <li id="testing"></li>
+      </ol>
+      <div id="tool-i" class="track tool" hidden role="group" aria-label="Tool I">
+        <span class="tool-name"><b aria-hidden="true">I</b><span id="name-i"></span></span>
+        <button id="prototype-i" type="button" data-detail="prototype-i" aria-controls="reader" hidden>
+          <svg class="tool-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="1"/><path d="M8 4v16m4-11h5m-5 5h5"/></svg>
+          <span lang="en">Signage Annotator</span>
+        </button>
+        <button id="trial-i" type="button" data-detail="trial-i" aria-controls="reader validation-i" aria-expanded="false" hidden></button>
+        <button id="validation-i" type="button" data-detail="validation-i" aria-controls="reader" hidden></button>
+      </div>
+      <div id="tool-ii" class="track tool" hidden role="group" aria-label="Tool II">
+        <span class="tool-name"><b aria-hidden="true">II</b><span id="name-ii"></span></span>
+        <button id="prototype-ii" type="button" data-detail="prototype-ii" aria-controls="reader" hidden>
+          <svg class="tool-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M2 12s3.5-6 10-6 10 6 10 6-3.5 6-10 6-10-6-10-6Z"/><circle cx="12" cy="12" r="2.5"/></svg>
+          <span lang="en">SIGN Visual Attention</span>
+        </button>
+        <button id="trial-ii" type="button" data-detail="trial-ii" aria-controls="reader validation-ii feedback-track" aria-expanded="false" hidden></button>
+        <button id="validation-ii" type="button" data-detail="validation-ii" aria-controls="reader" hidden></button>
+      </div>
+      <div id="feedback-track" class="track" hidden>
+        <button id="feedback-ii" type="button" data-detail="feedback-ii" aria-controls="reader"></button>
+      </div>
+    </section>
+    <section id="reader" aria-labelledby="reader-title" aria-live="polite" aria-atomic="true" tabindex="0">
+      <h1 id="reader-title">Research Method</h1>
+      <p id="reader-copy">This study develops and evaluates tools for co-designing interpretive signs in public spaces.</p>
+      <figure id="reader-media" hidden></figure>
+    </section>
+  </main>
+</body>
+</html>
