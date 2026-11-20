@@ -145,6 +145,25 @@
     ],
   };
 
+  const methodsByStep = {
+    1: [
+      ['实地调查', '问卷调查', '焦点小组', '现场观察'],
+      ['現地調査', 'アンケート調査', 'フォーカスグループ', '現場観察'],
+    ],
+    2: [
+      ['文献调查', '专家访谈'],
+      ['文献調査', '専門家インタビュー'],
+    ],
+    3: [
+      ['原型设计', '编码规则设计', '对照实验设计'],
+      ['プロトタイプ設計', 'コーディングルールの設計', '比較実験の設計'],
+    ],
+    4: [
+      ['工具试用', '实地对照实验', '专家访谈', '参与者访谈'],
+      ['ツールの試用', '現地比較実験', '専門家インタビュー', '参加者インタビュー'],
+    ],
+  };
+
   let lang = new URLSearchParams(location.search).get('lang') === 'zh' ? 'zh' : 'ja-en';
   let target = 0;
   let shown = 0;
@@ -215,6 +234,15 @@
     }
     const copy = get('reader-copy');
     copy.textContent = lang === 'zh' ? copyZh : japaneseCopy[selected];
+    const methods = get('reader-methods');
+    const methodLabels = methodsByStep[selected]?.[lang === 'zh' ? 0 : 1] ?? [];
+    get('methods-title').textContent = lang === 'zh' ? '方法' : '用いた方法';
+    get('methods-list').replaceChildren(...methodLabels.map(text => {
+      const item = document.createElement('li');
+      item.textContent = text;
+      return item;
+    }));
+    methods.hidden = methodLabels.length === 0;
     const media = get('reader-media');
     const items = mediaByNode[selected] ?? [];
     media.replaceChildren(...items.map(([filename, zhAlt, jaAlt]) => {
@@ -231,7 +259,7 @@
     media.hidden = items.length === 0;
     get('reader').scrollTop = 0;
     if (!first && !reduced.matches) {
-      for (const node of [heading, copy, ...(items.length ? [media] : [])]) {
+      for (const node of [heading, copy, ...(methodLabels.length ? [methods] : []), ...(items.length ? [media] : [])]) {
         node.getAnimations().forEach(animation => animation.cancel());
         node.animate([{ opacity: .45, transform: 'translateY(5px)' }, { opacity: 1, transform: 'none' }], { ...timing, duration: 210 });
       }
@@ -338,7 +366,7 @@
   reduced.addEventListener('change', () => {
     if (!reduced.matches) return;
     clearTimeout(timer);
-    for (const id of ['reader-title', 'reader-copy', 'reader-media']) {
+    for (const id of ['reader-title', 'reader-copy', 'reader-methods', 'reader-media']) {
       get(id).getAnimations().forEach(animation => animation.cancel());
     }
     shown = target;
