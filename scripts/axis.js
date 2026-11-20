@@ -226,17 +226,14 @@
     const [, ja, zh, , copyZh] = reading[selected];
     const heading = get('reader-title');
     heading.textContent = lang === 'zh' ? zh : ja;
-    if (lang !== 'zh') {
-      const annotation = document.createElement('span');
-      annotation.lang = 'en';
-      annotation.textContent = englishTerms[selected];
-      heading.append(annotation);
-    }
+    const annotation = get('reader-english');
+    annotation.textContent = lang === 'zh' ? '' : englishTerms[selected];
+    annotation.hidden = lang === 'zh';
     const copy = get('reader-copy');
     copy.textContent = lang === 'zh' ? copyZh : japaneseCopy[selected];
     const methods = get('reader-methods');
     const methodLabels = methodsByStep[selected]?.[lang === 'zh' ? 0 : 1] ?? [];
-    get('methods-title').textContent = lang === 'zh' ? '方法' : '用いた方法';
+    methods.setAttribute('aria-label', lang === 'zh' ? '方法' : '用いた方法');
     get('methods-list').replaceChildren(...methodLabels.map(text => {
       const item = document.createElement('li');
       item.textContent = text;
@@ -259,7 +256,7 @@
     media.hidden = items.length === 0;
     get('reader').scrollTop = 0;
     if (!first && !reduced.matches) {
-      for (const node of [heading, copy, ...(methodLabels.length ? [methods] : []), ...(items.length ? [media] : [])]) {
+      for (const node of [annotation, heading, copy, ...(methodLabels.length ? [methods] : []), ...(items.length ? [media] : [])]) {
         node.getAnimations().forEach(animation => animation.cancel());
         node.animate([{ opacity: .45, transform: 'translateY(5px)' }, { opacity: 1, transform: 'none' }], { ...timing, duration: 210 });
       }
@@ -366,7 +363,7 @@
   reduced.addEventListener('change', () => {
     if (!reduced.matches) return;
     clearTimeout(timer);
-    for (const id of ['reader-title', 'reader-copy', 'reader-methods', 'reader-media']) {
+    for (const id of ['reader-english', 'reader-title', 'reader-copy', 'reader-methods', 'reader-media']) {
       get(id).getAnimations().forEach(animation => animation.cancel());
     }
     shown = target;
