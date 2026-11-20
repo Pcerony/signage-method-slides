@@ -195,7 +195,7 @@
     const before = paths.length
       ? paths.map(path => hidden ? '1' : getComputedStyle(path).strokeDashoffset)
       : [hidden ? '0' : getComputedStyle(node).opacity];
-    const entryTransform = id === 'workflow-line' ? 'scaleX(0)' : 'translateY(8px)';
+    const entryTransform = 'translateY(8px)';
     const transform = hidden ? entryTransform : getComputedStyle(node).transform;
     previous?.forEach(animation => animation.cancel());
     node.removeAttribute('hidden');
@@ -209,7 +209,7 @@
       { opacity: visible ? 1 : 0, transform: visible ? 'none' : entryTransform },
     ], {
       ...timing, duration, fill: 'both',
-      delay: visible && hidden && node.classList.contains('track') ? 85 : 0,
+      delay: visible && hidden && node.matches('.track, #practice') ? 85 : 0,
     })];
     running.set(node, active);
     Promise.all(active.map(animation => animation.finished)).then(() => {
@@ -274,7 +274,7 @@
     const tool = typeof selected === 'string' && selected.match(/-(ii?)$/)?.[1];
     if (tool) map.dataset.focusTool = tool;
     else delete map.dataset.focusTool;
-    set(['practice', 'practice-lines', 'workflow-line'], shown >= 1);
+    set(['practice', 'practice-lines'], shown >= 1);
     ['problem-mapping', 'testing'].forEach(id => get(id).toggleAttribute('data-gap', shown >= 1.5));
     set(['tool-i', 'tool-ii', 'tool-lines'], shown >= 2);
     set(['prototype-i', 'prototype-ii', 'prototype-lines'], shown >= 3);
@@ -332,7 +332,7 @@
     });
     get('map').setAttribute('aria-label', zh ? '研究方法图' : '研究方法の構成図');
     get('spine').setAttribute('aria-label', zh ? '研究方法主轴' : '研究方法の主軸');
-    get('practice').setAttribute('aria-label', zh ? '共创流程' : '共創の流れ');
+    get('practice-steps').setAttribute('aria-label', zh ? '共创流程' : '共創の流れ');
     for (const tool of ['i', 'ii']) {
       const name = get('name-' + tool);
       const fullName = name.textContent;

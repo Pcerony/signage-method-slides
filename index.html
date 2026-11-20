@@ -4,14 +4,12 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Research Method</title>
-  <link rel="stylesheet" href="./styles/axis.css?v=ggj-ideation">
-  <script src="./scripts/axis.js?v=ggj-ideation" defer></script>
+  <link rel="stylesheet" href="./styles/axis.css?v=workflow-caption">
+  <script src="./scripts/axis.js?v=workflow-caption" defer></script>
 </head>
 <body>
   <main aria-label="Research method">
     <section id="map" aria-label="Method map">
-      <p id="case-label">Global Goals Jam を例に</p>
-      <div id="workflow-line" aria-hidden="true" hidden></div>
       <svg viewBox="0 0 1000 400" preserveAspectRatio="none" aria-hidden="true">
         <defs>
           <linearGradient id="forest-rail" gradientUnits="userSpaceOnUse" x2="860" y2="0">
@@ -54,14 +52,18 @@
         <li><button id="step-prototype" type="button" data-step="3" aria-controls="prototype-i prototype-ii">Build prototypes</button></li>
         <li><button id="step-validation" type="button" data-step="4" aria-controls="trial-i trial-ii">Validate tools</button></li>
       </ol>
-      <ol id="practice" class="track" hidden aria-label="Co-design workflow">
-        <li id="study"></li>
-        <li id="field"></li>
-        <li id="problem-mapping"></li>
-        <li id="ideation"></li>
-        <li id="design"></li>
-        <li id="testing"></li>
-      </ol>
+      <div id="practice" hidden>
+        <p id="case-label">Global Goals Jam を例に</p>
+        <div id="workflow-line" aria-hidden="true"></div>
+        <ol id="practice-steps" class="track" aria-label="Co-design workflow">
+          <li id="study"></li>
+          <li id="field"></li>
+          <li id="problem-mapping"></li>
+          <li id="ideation"></li>
+          <li id="design"></li>
+          <li id="testing"></li>
+        </ol>
+      </div>
       <div id="tool-i" class="track tool" hidden role="group" aria-label="Tool I">
         <span class="tool-name"><b aria-hidden="true">I</b><span id="name-i"></span></span>
         <button id="prototype-i" type="button" data-detail="prototype-i" aria-controls="reader" hidden>
