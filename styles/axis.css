@@ -47,6 +47,7 @@ button:active { transform: translateY(2px); }
 }
 #map[data-layout="practice"] { --spine-position: 73%; }
 #map[data-layout="expanded"] { --spine-position: 90%; --workflow-position: 17%; }
+#case-label { position: absolute; inset: 0 auto auto 2%; z-index: 1; margin: 0; color: var(--muted); font-size: 12px; font-weight: 500; }
 #spine, #practice, #workflow-line { transition: top var(--axis-motion); }
 #workflow-line {
   position: absolute;
@@ -129,7 +130,7 @@ button:active { transform: translateY(2px); }
 #spine button { width: 100%; height: 100%; padding: 0 4px; }
 #spine button[aria-pressed="true"] { color: var(--ink); }
 #spine button:focus-visible { outline-color: currentColor; outline-offset: -5px; }
-#practice { top: var(--workflow-position); grid-template-columns: repeat(5, 1fr); color: var(--muted); font-size: 16px; font-weight: 500; }
+#practice { top: var(--workflow-position); grid-template-columns: repeat(6, minmax(0, 1fr)); color: var(--muted); font-size: 16px; font-weight: 500; }
 #practice li { transition: color 180ms ease-out; }
 #practice .track-label { display: inline-block; }
 #map[data-quiet-workflow] #practice {

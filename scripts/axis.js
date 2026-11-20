@@ -12,8 +12,9 @@
     'step-validation': ['Validate tools', '验证工具'],
     study: ['Pre-workshop study', '事前学习'],
     field: ['Site visits & research', '实地考察与调研'],
-    focus: ['Problem mapping & focus groups', '问题梳理与焦点小组'],
-    design: ['Prototype design', '原型设计'],
+    'problem-mapping': ['Problem mapping', '问题梳理'],
+    ideation: ['Ideation', '创意提出'],
+    design: ['Build a prototype', '制作原型'],
     testing: ['Prototype testing', '原型测试'],
     'name-i': ['I · Early diagnosis', 'I · 前期诊断'],
     'name-ii': ['II · Field evaluation', 'II · 后期实地评估'],
@@ -31,8 +32,9 @@
     'step-validation': 'ツールを確かめる',
     study: '事前学習',
     field: '現地を見る',
-    focus: '話し合い・課題整理',
-    design: 'サインを作る',
+    'problem-mapping': '課題を整理する',
+    ideation: 'アイデアを出す',
+    design: '試作案を作る',
     testing: 'サインを試す',
     'name-i': 'I · 設計前の確認',
     'name-ii': 'II · 現地での評価',
@@ -51,8 +53,8 @@
     ],
     1: [
       'Field participation', '現場への参加と観察', '现场参与与观察',
-      'The co-design process begins with studying the topic before the workshop, then moves through site visits and field research. Participants use focus groups to make sense of the problems they find, develop prototype signs, and test them. The study examines what happens at each step in the botanical garden case.',
-      '共创先从事前学习和现场调查开始。参与者观察标识和周围环境，再在小组里交换看法、整理需要解决的问题。接着设计标识原型，在现场试一试。研究者参加了这套流程，重点观察哪些环节需要更可靠的判断依据。',
+      'In the Global Goals Jam example, participants study the topic, visit the site, map the problems, propose ideas, build prototypes, and test them.',
+      '以 Global Goals Jam 为例，共创先从事前学习和现场调查开始。参与者观察标识和周围环境，再梳理问题、提出创意。接着把创意做成标识原型，并在现场试一试。研究者参加了这套流程，重点观察哪些环节需要更可靠的判断依据。',
     ],
     2: [
       'Two research gaps', '二つの研究課題', '两个研究问题',
@@ -108,7 +110,7 @@
 
   const japaneseCopy = {
     0: '研究方法はデザイン科学研究（Design Science Research、DSR）です。現場でツールを作って試す点では、アクション・デザイン・リサーチ（Action Design Research、ADR）の考え方も取り入れています。植物園でサインを一緒に作る現場に参加し、判断が難しいところを調べました。次に、その課題に合ったツールを作り、現場で判断の助けになるかを確かめます。',
-    1: 'まずテーマを学び、植物園でサインとその周りの環境を見ます。次に、グループで意見を出し合い、何を直すかを整理します。そのあと、新しいサインの試作案を作って現地で試します。研究者もこの流れに参加し、どの場面で判断のための情報が足りないかを見ました。',
+    1: 'Global Goals Jam を例に、共創の流れを見ます。まずテーマを学び、植物園でサインとその周りの環境を見ます。次に、課題を整理し、解決のためのアイデアを出します。そのアイデアをサインの試作案にし、現地で試します。研究者もこの流れに参加し、どの場面で判断のための情報が足りないかを見ました。',
     2: '一つ目は、今あるサインのどこを直すかを決める場面です。見方は人によって違うので、意見を比べるための共通のルールが必要でした。二つ目は、試作案を現地で試す場面です。読む人のじゃまをせず、どの情報を見たかを知る必要がありました。設計の前と後にある別々の課題なので、それぞれにツールを作りました。',
     3: '二つのツールは異なる方法を使います。I は写真を使った質的なテーマ分析です。その結果を数値でまとめ、サイン全体を見直す手がかりにします。II は視線データを使った定量分析です。作ったサインを現地で読んだときの見方を調べます。二つのツールは別々に使えます。',
     'prototype-i': 'サインの画像を使う質的なテーマ分析ツールです。実験者とサインの専門家など、複数の人が共通のルールで写真を見て、気づいた特徴をテーマごとに記録できます。複数のサインの記録を集め、植物園のサイン全体にどんな傾向があるかを数値でまとめたレポートを作れます。分析の出発点は画像を見て行う判断です。',
@@ -273,7 +275,7 @@
     if (tool) map.dataset.focusTool = tool;
     else delete map.dataset.focusTool;
     set(['practice', 'practice-lines', 'workflow-line'], shown >= 1);
-    ['focus', 'testing'].forEach(id => get(id).toggleAttribute('data-gap', shown >= 1.5));
+    ['problem-mapping', 'testing'].forEach(id => get(id).toggleAttribute('data-gap', shown >= 1.5));
     set(['tool-i', 'tool-ii', 'tool-lines'], shown >= 2);
     set(['prototype-i', 'prototype-ii', 'prototype-lines'], shown >= 3);
     set(['trial-i', 'trial-ii', 'trial-lines'], shown >= 4);
@@ -317,6 +319,7 @@
     const zh = lang === 'zh';
     document.documentElement.lang = zh ? 'zh' : 'ja';
     document.title = '研究方法';
+    get('case-label').textContent = zh ? '以 Global Goals Jam 为例' : 'Global Goals Jam を例に';
     Object.entries(labels).forEach(([id, pair]) => {
       const node = get(id);
       const text = zh ? pair[1] : japaneseLabels[id];
