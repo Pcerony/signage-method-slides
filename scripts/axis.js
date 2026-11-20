@@ -45,9 +45,9 @@
 
   const reading = {
     0: [
-      'Design Science Research', 'デザイン科学研究（DSR）', '设计科学研究（DSR）',
+      'Design Science Research', 'デザイン科学研究（DSR）\nアクションデザイン研究（ADR）', '设计科学研究（DSR）\n行动设计研究（ADR）',
       'How can we improve the way people co-design interpretive signs in public spaces? This study follows design science research (DSR) and action design research (ADR): participate in co-design, identify problems in the process, build tools to address them, and test whether those tools are useful in practice.',
-      '本研究采用设计科学研究（Design Science Research，DSR）作为研究方法。为了改善植物园解说标识的共创，我先参与现场实践，找出难以判断的环节，再为这些问题开发工具，最后回到现场检验工具能否帮助判断。研究也借鉴了行动设计研究（ADR）中在实践现场开发和评估工具的做法。',
+      '本研究采用设计科学研究（Design Science Research，DSR），也借鉴行动设计研究（Action Design Research，ADR）在实践现场开发和评估工具的做法。为了改善植物园解说标识的共创，我先参与现场实践，找出难以判断的环节，再为这些问题开发工具，最后回到现场检验工具能否帮助判断。',
     ],
     1: [
       'Field participation', '現場への参加と観察', '现场参与与观察',
@@ -107,7 +107,7 @@
   };
 
   const japaneseCopy = {
-    0: '本研究の方法は、デザイン科学研究（Design Science Research、DSR）です。植物園のサインを一緒に作る現場に参加し、どこで判断が難しくなるかを調べました。次に、その課題に合ったツールを作りました。最後に現場で試し、判断の助けになるかを確かめます。実践の中で作って試す点では、アクション・デザイン・リサーチ（ADR）の考え方も取り入れています。',
+    0: '研究方法はデザイン科学研究（Design Science Research、DSR）です。現場でツールを作って試す点では、アクション・デザイン・リサーチ（Action Design Research、ADR）の考え方も取り入れています。植物園でサインを一緒に作る現場に参加し、判断が難しいところを調べました。次に、その課題に合ったツールを作り、現場で判断の助けになるかを確かめます。',
     1: 'まずテーマを学び、植物園でサインとその周りの環境を見ます。次に、グループで意見を出し合い、何を直すかを整理します。そのあと、新しいサインの試作案を作って現地で試します。研究者もこの流れに参加し、どの場面で判断のための情報が足りないかを見ました。',
     2: '一つ目は、今あるサインのどこを直すかを決める場面です。見方は人によって違うので、意見を比べるための共通のルールが必要でした。二つ目は、試作案を現地で試す場面です。読む人のじゃまをせず、どの情報を見たかを知る必要がありました。設計の前と後にある別々の課題なので、それぞれにツールを作りました。',
     3: '二つのツールは異なる方法を使います。I は写真を使った質的なテーマ分析です。その結果を数値でまとめ、サイン全体を見直す手がかりにします。II は視線データを使った定量分析です。作ったサインを現地で読んだときの見方を調べます。二つのツールは別々に使えます。',
@@ -122,7 +122,7 @@
   };
 
   const englishTerms = {
-    0: 'Research Method · DSR / ADR',
+    0: 'Design Science Research · Action Design Research',
     1: 'Co-design',
     2: 'Workflow Gaps',
     3: 'Tool Prototypes',
