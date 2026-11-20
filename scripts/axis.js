@@ -300,7 +300,7 @@
         label.className = 'track-label';
         label.textContent = text;
         node.replaceChildren(label);
-      } else node.textContent = text;
+      } else node.textContent = node.dataset.step ? `${node.dataset.step}. ${text}` : text;
     });
     get('map').setAttribute('aria-label', zh ? '研究方法图' : '研究方法の構成図');
     get('spine').setAttribute('aria-label', zh ? '研究方法主轴' : '研究方法の主軸');
