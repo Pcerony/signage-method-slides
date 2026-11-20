@@ -47,7 +47,17 @@ button:active { transform: translateY(2px); }
 }
 #map[data-layout="practice"] { --spine-position: 73%; }
 #map[data-layout="expanded"] { --spine-position: 90%; --workflow-position: 17%; }
-#case-label { position: absolute; top: calc(100% + 10px); left: 0; margin: 0; color: var(--muted); font-size: 12px; font-weight: 500; }
+#case-label {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: calc(100% + 8px);
+  margin: 0;
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 500;
+  writing-mode: vertical-rl;
+  white-space: nowrap;
+}
 #spine, #practice { transition: top var(--axis-motion); }
 #workflow-line {
   position: absolute;
@@ -202,6 +212,7 @@ button:active { transform: translateY(2px); }
   main { grid-template-rows: minmax(0, 1fr) 218px; }
   #spine { font-size: 14px; grid-auto-rows: 48px; }
   #practice { font-size: 11px; }
+  #case-label { right: calc(100% + 5px); font-size: 11px; }
   .tool { font-size: 12px; }
   .tool > * { padding-inline: 5px; }
   .tool-name, .tool button:has(.tool-icon) { gap: 4px; }
@@ -217,6 +228,12 @@ button:active { transform: translateY(2px); }
   #reader:has(#reader-media:not([hidden])) { display: grid; grid-template-columns: minmax(0, 1fr); gap: 8px; }
   #reader-media { grid-row: 2; }
   #reader-media img { height: 84px; }
+}
+@media (max-height: 760px) {
+  #map[data-layout="practice"] { --workflow-position: 34%; }
+  #map[data-layout="practice"] #practice-connector { d: path("M140 286H16V136"); }
+  #case-label { top: calc(100% + 4px); }
+  #map[data-layout="practice"] #case-label { font-size: 10px; }
 }
 @media (max-width: 360px) {
   #map:not([data-layout]) + #reader h1 { font-size: 18px; }
