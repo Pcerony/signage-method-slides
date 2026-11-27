@@ -339,7 +339,8 @@
       name.textContent = fullName.split(' · ')[1];
       get('tool-' + tool).setAttribute('aria-label', fullName);
     }
-    document.querySelector('main').setAttribute('aria-label', document.title);
+    const methodView = get('method-view');
+    if (methodView) methodView.setAttribute('aria-label', lang === 'zh' ? '研究方法' : '研究方法');
   }
 
   mainSteps.forEach(button => button.addEventListener('click', () => choose(Number(button.dataset.step))));
@@ -348,21 +349,28 @@
     if (selected === 'trial-i' || selected === 'trial-ii') openEvidence.add(selected);
     paint();
   }));
-  function switchLanguage() {
-    lang = lang === 'zh' ? 'ja-en' : 'zh';
-    const url = new URL(location.href);
-    url.searchParams.set('lang', lang);
-    url.hash = '';
-    history.replaceState(null, '', url);
+  function setLanguage(nextLang) {
+    lang = nextLang === 'zh' ? 'zh' : 'ja-en';
     translate();
     paintReading();
   }
-  window.addEventListener('keydown', event => {
-    if (event.key === 'Escape' && !event.repeat && !event.defaultPrevented) {
-      event.preventDefault();
-      switchLanguage();
+  function focusFromOutline(targetState) {
+    clearTimeout(timer);
+    openEvidence.clear();
+    if (targetState === 'gaps') {
+      target = 2; shown = 2; selected = 2;
+    } else if (targetState === 'prototype-i') {
+      target = 3; shown = 3; selected = 'prototype-i';
+    } else if (targetState === 'prototype-ii') {
+      target = 3; shown = 3; selected = 'prototype-ii';
+    } else if (targetState === 'validation-ii') {
+      target = 4; shown = 4; openEvidence.add('trial-ii'); selected = 'validation-ii';
+    } else {
+      target = 0; shown = 0; selected = 0;
     }
-  });
+    paint();
+  }
+  window.__methodAxis = { setLanguage, focusFromOutline, getLang: () => lang };
   reduced.addEventListener('change', () => {
     if (!reduced.matches) return;
     clearTimeout(timer);

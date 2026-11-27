@@ -1,14 +1,155 @@
 <!doctype html>
-<html lang="en">
+<html lang="ja">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Research Method</title>
-  <link rel="stylesheet" href="./styles/axis.css?v=caption-vertical">
-  <script src="./scripts/axis.js?v=workflow-caption" defer></script>
+  <title>修士論文の構成と研究方法</title>
+  <link rel="stylesheet" href="./styles/axis.css?v=thesis-outline">
+  <script src="./scripts/axis.js?v=thesis-outline" defer></script>
+  <script src="./scripts/outline.js?v=thesis-outline" defer></script>
 </head>
 <body>
-  <main aria-label="Research method">
+  <header id="view-bar" aria-label="ページ切替">
+    <nav class="view-tabs" aria-label="構成と研究方法">
+      <button id="tab-outline" type="button" data-view-tab="outline" aria-current="page">
+        <span class="tab-num">01</span>
+        <span class="tab-label">論文構成</span>
+      </button>
+      <button id="tab-method" type="button" data-view-tab="method">
+        <span class="tab-num">02</span>
+        <span class="tab-label">研究方法</span>
+      </button>
+    </nav>
+    <div class="view-actions">
+      <button id="toggle-toc" type="button" aria-expanded="false" aria-controls="toc-sheet">全目次</button>
+    </div>
+  </header>
+
+  <!-- Page 01: Thesis Outline (Opening View) -->
+  <main id="outline-view" aria-label="修士論文の構成図">
+    <section id="outline-map" aria-label="章構成マップ">
+      <svg id="outline-svg" aria-hidden="true">
+        <defs>
+          <linearGradient id="outline-forest-rail" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="1000" y2="0">
+            <stop stop-color="#092f23"/>
+            <stop offset=".62" stop-color="#0b5d3b"/>
+            <stop offset="1" stop-color="#318f65"/>
+          </linearGradient>
+          <linearGradient id="outline-lemon-rail" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="1000" y2="0">
+            <stop stop-color="#47551c"/>
+            <stop offset=".62" stop-color="#798b25"/>
+            <stop offset="1" stop-color="#c5e803"/>
+          </linearGradient>
+        </defs>
+        <g id="outline-connectors"></g>
+        <g id="outline-branch-i"></g>
+        <g id="outline-branch-ii"></g>
+        <g id="outline-coupling"></g>
+      </svg>
+
+      <p id="outline-side-label">修士論文・全八章</p>
+
+      <div id="outline-backbone-line" aria-hidden="true"></div>
+      <ol id="outline-backbone" class="track outline-grid" aria-label="論文主軸">
+        <li class="col-1">
+          <button type="button" data-ch="1" data-part="1" aria-pressed="true" aria-controls="outline-reader">
+            <span class="ch-num">01</span>
+            <span class="ch-label" data-ok="ch1">序論</span>
+          </button>
+        </li>
+        <li class="col-2">
+          <button type="button" data-ch="2" data-part="1" aria-pressed="false" aria-controls="outline-reader">
+            <span class="ch-num">02</span>
+            <span class="ch-label" data-ok="ch2">先行研究と理論</span>
+          </button>
+        </li>
+        <li class="col-3">
+          <button type="button" data-ch="3" data-part="1" aria-pressed="false" aria-controls="outline-reader">
+            <span class="ch-num">03</span>
+            <span class="ch-label" data-ok="ch3">研究方法論</span>
+          </button>
+        </li>
+        <li class="col-6">
+          <button type="button" data-ch="7" data-part="4" aria-pressed="false" aria-controls="outline-reader">
+            <span class="ch-num">07</span>
+            <span class="ch-label" data-ok="ch7">総合考察</span>
+          </button>
+        </li>
+        <li class="col-7">
+          <button type="button" data-ch="8" data-part="4" aria-pressed="false" aria-controls="outline-reader">
+            <span class="ch-num">08</span>
+            <span class="ch-label" data-ok="ch8">結論と展望</span>
+          </button>
+        </li>
+      </ol>
+
+      <div id="outline-track-i" class="track outline-grid outline-tool" role="group" aria-label="ツール I">
+        <div class="outline-tool-node col-4">
+          <button type="button" data-ch="4" data-part="2" aria-pressed="false" aria-controls="outline-reader">
+            <b class="outline-roman roman-i" aria-hidden="true">I</b>
+            <span class="outline-node-text">
+              <span class="ch-num">04</span>
+              <span class="ch-label" data-ok="ch4">ツール I の構築と検証</span>
+              <span class="ch-sub" lang="en">Signage Annotator</span>
+            </span>
+          </button>
+        </div>
+      </div>
+
+      <span id="outline-coupling-label" aria-hidden="true">事例再利用</span>
+
+      <div id="outline-track-ii" class="track outline-grid outline-tool" role="group" aria-label="ツール II">
+        <div class="outline-tool-node col-4">
+          <button type="button" data-ch="5" data-part="3" aria-pressed="false" aria-controls="outline-reader">
+            <b class="outline-roman roman-ii" aria-hidden="true">II</b>
+            <span class="outline-node-text">
+              <span class="ch-num">05</span>
+              <span class="ch-label" data-ok="ch5">ツール II の構築</span>
+              <span class="ch-sub" lang="en">Eye-tracking × Entropy</span>
+            </span>
+          </button>
+        </div>
+        <div class="outline-tool-node col-5">
+          <button type="button" data-ch="6" data-part="3" aria-pressed="false" aria-controls="outline-reader">
+            <span class="outline-node-text">
+              <span class="ch-num">06</span>
+              <span class="ch-label" data-ok="ch6">ツール II の現地検証</span>
+              <span class="ch-sub" lang="en">Field Validation</span>
+            </span>
+          </button>
+        </div>
+      </div>
+
+      <ol id="outline-spine" class="track spine-bar" data-active aria-label="論文の4部構成">
+        <li><button type="button" data-part-btn="1" aria-pressed="true" data-ok="p1">1. 基盤</button></li>
+        <li><button type="button" data-part-btn="2" aria-pressed="false" data-ok="p2">2. ツール I</button></li>
+        <li><button type="button" data-part-btn="3" aria-pressed="false" data-ok="p3">3. ツール II</button></li>
+        <li><button type="button" data-part-btn="4" aria-pressed="false" data-ok="p4">4. 統合</button></li>
+      </ol>
+    </section>
+
+    <section id="outline-reader" aria-labelledby="outline-reader-title" aria-live="polite" tabindex="0">
+      <div class="outline-reader-head">
+        <span id="outline-reader-english" lang="en">CHAPTER 01 · INTRODUCTION</span>
+        <h1 id="outline-reader-title">第1章　序論</h1>
+        <p id="outline-reader-role"></p>
+        <div class="outline-reader-foot">
+          <div class="outline-nav" aria-label="前後の章">
+            <button id="outline-prev" type="button" aria-label="前の章">←</button>
+            <span id="outline-counter">01 / 08</span>
+            <button id="outline-next" type="button" aria-label="次の章">→</button>
+          </div>
+          <button id="open-method-link" type="button" hidden>研究方法図を開く →</button>
+        </div>
+      </div>
+      <div class="outline-reader-body">
+        <ol id="outline-sections"></ol>
+      </div>
+    </section>
+  </main>
+
+  <!-- Page 02: Existing Interactive Research Method Map -->
+  <main id="method-view" aria-label="Research method" hidden>
     <section id="map" aria-label="Method map">
       <svg viewBox="0 0 1000 400" preserveAspectRatio="none" aria-hidden="true">
         <defs>
@@ -46,7 +187,7 @@
           <path class="draw branch branch-ii" pathLength="1" d="M620 242H738V296H860"/>
         </g>
       </svg>
-      <ol id="spine" class="track" aria-label="Shared method">
+      <ol id="spine" class="track spine-bar" aria-label="Shared method">
         <li><button id="step-practice" type="button" data-step="1" aria-controls="practice">Join co-design</button></li>
         <li><button id="step-gaps" type="button" data-step="2" aria-controls="tool-i tool-ii">Identify gaps</button></li>
         <li><button id="step-prototype" type="button" data-step="3" aria-controls="prototype-i prototype-ii">Build prototypes</button></li>
@@ -98,5 +239,20 @@
       <figure id="reader-media" hidden></figure>
     </section>
   </main>
+
+  <!-- Minimal Full TOC Overlay Sheet -->
+  <aside id="toc-sheet" hidden aria-label="論文目次一覧">
+    <div class="toc-inner">
+      <header class="toc-header">
+        <div>
+          <span class="toc-kicker" lang="en">TABLE OF CONTENTS</span>
+          <h2 id="toc-heading">修士論文 目次一覧</h2>
+          <p id="toc-thesis-title" class="toc-thesis-title"></p>
+        </div>
+        <button id="close-toc" type="button" aria-label="閉じる">閉じる</button>
+      </header>
+      <div id="toc-grid" class="toc-grid"></div>
+    </div>
+  </aside>
 </body>
 </html>
